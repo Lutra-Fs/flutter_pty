@@ -373,14 +373,14 @@ FFI_PLUGIN_EXPORT PtyHandle *pty_create(PtyOptions *options)
         LPWSTR temp = environment_block;
         environment_block = NULL;
         LPWSTR parentEnvBlock = GetEnvironmentStringsW();
-        int parent_envBlock_size = 0;
+        size_t parent_envBlock_size = 0;
         LPWSTR env = parentEnvBlock;
         while (*env) 
         {
             parent_envBlock_size += wcslen(env) + 1;
             env += wcslen(env) + 1;
         }
-        int new_env_size = 0;
+        size_t new_env_size = 0;
         LPWSTR new_env = temp;
         while (*new_env) 
         {
